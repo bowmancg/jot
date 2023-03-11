@@ -7,24 +7,35 @@ import { setHTML } from "../Utils/Writer.js";
 
 function _drawNotes() {
     let template = ""
-    appState.notes.forEach(note => (template += note.NoteTemplate))
-    setHTML("listings", template)
+    appState.notes.forEach(note => (template += note.noteListTemplate))
+    setHTML("note-list", template)
 }
 
+function _drawActiveNote() {
+    if (appState.activeNote) {
+        setHTML("note-info", appState.activeNote.NoteTemplate)
+    }
+}
 
 export class NotesController {
     constructor() {
         console.log('construct');
-        appState.on("listings", _drawNotes())
+        appState.on("notes", _drawNotes)
+        appState.on("activeNote", _drawActiveNote)
     }
 
     addNote() {
-        if (window.event){
-            window.event.preventDefault()
-            let form = window.event.target
-            let formData = getFormData(form)
-            console.log(formData);
-        }
+        window.event.preventDefault()
+        console.log('note add');
+        let form = window.event.target
+        let formData = getFormData(form)
+        console.log(formData);
+        notesService.addNote(formData)
+    }
+
+
+    showNotes() {
+        _drawNotes()
     }
 
 }
