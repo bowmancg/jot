@@ -28,9 +28,9 @@
   <main>
     <div class="container">
       <div class="row">
-        <div class="col-4 col-lg-4 p-4">
+        <div class="col-lg-3 p-4">
           <ul id="note-list" class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-start">
+            <!-- <li class="list-group-item d-flex justify-content-between align-items-start">
               <div class="ms-2 me-auto">
                 <div class="fw-bold">
                   Title
@@ -39,24 +39,27 @@
                 date
 
               </div>
-            </li>
+            </li> -->
           </ul>
         </div>
+
         <div id="note-info" class="col-3">
 
         </div>
 
-        <div class="col-5 mt-2 card form-card elevation-5">
+        <div class="col-lg-5 mt-5 card form-card elevation-5">
           <section class="row">
             <h4>Take a Note</h4>
-            <form onsubmit="app.notesController.addNote()">
+            <form id="note-form" onsubmit="app.notesController.addNote()">
               <input type="text" required class="form-control" id="note-title" name="title" minlength="3" maxlength="15"
                 placeholder="Note Title">
-              <textarea placeholder="write a note..." class="form-control" name="content" id="note-content" cols="30" rows="10"></textarea>
+              <textarea placeholder="write a note..." class="form-control" name="content" id="note-content" cols="30"
+                rows="10"></textarea>
               <div class="row">
                 <div class="col-2 mx-4">
-                  <button type="submit" class="btn btn-secondary">Submit</button>
+                  <button type="submit" class="btn btn-secondary">Save</button>
                 </div>
+
             </form>
           </section>
         </div>

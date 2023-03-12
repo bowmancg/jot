@@ -7,3 +7,4 @@ class App {
 }
 
 window["app"] = new App();
+app.notesController.showNotes()
