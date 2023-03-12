@@ -11,6 +11,12 @@ class NotesService {
         saveState("activeNote", appState.activeNote)
     }
 
+    clearActiveNote() {
+        appState.activeNote = null
+        saveState("activeNote", null)
+        
+    }
+
     addNote(formData) {
         let newNote = new Note(formData)
         appState.notes = [...appState.notes, newNote]
@@ -19,10 +25,13 @@ class NotesService {
 
     editNote(formData) {
         let foundNote = appState.notes.find((n) => n.id == appState.activeNote.id)
-        foundNote.updatedAt = new Date().toDateString()
         foundNote.title = formData.title
         foundNote.content = formData.content
+        foundNote.updatedAt = new Date()
+        
 
+        console.log('found note', foundNote);
+        
         appState.activeNote = foundNote
         saveState("activeNote",appState.activeNote)
         saveState("notes", appState.notes)
